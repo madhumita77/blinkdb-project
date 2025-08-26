@@ -1,0 +1,44 @@
+SET: 0.00====== SET ======
+  10000 requests completed in 0.11 seconds
+  1000 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+0.01% <= 4 milliseconds
+52.98% <= 5 milliseconds
+94.83% <= 6 milliseconds
+96.59% <= 7 milliseconds
+97.89% <= 8 milliseconds
+98.94% <= 9 milliseconds
+99.79% <= 10 milliseconds
+100.00% <= 10 milliseconds
+92592.59 requests per second
+
+GET: 0.00====== GET ======
+  10000 requests completed in 0.12 seconds
+  1000 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+0.01% <= 4 milliseconds
+49.97% <= 5 milliseconds
+87.34% <= 6 milliseconds
+89.21% <= 7 milliseconds
+91.06% <= 8 milliseconds
+92.26% <= 9 milliseconds
+93.65% <= 10 milliseconds
+94.59% <= 11 milliseconds
+96.11% <= 12 milliseconds
+96.59% <= 13 milliseconds
+97.08% <= 14 milliseconds
+97.62% <= 15 milliseconds
+98.09% <= 16 milliseconds
+98.59% <= 17 milliseconds
+99.07% <= 18 milliseconds
+99.59% <= 19 milliseconds
+100.00% <= 19 milliseconds
+82644.62 requests per second
+
+

@@ -1,0 +1,323 @@
+\hypertarget{classBlinkDB}{}\doxysection{Blink\+DB Class Reference}
+\label{classBlinkDB}\index{BlinkDB@{BlinkDB}}
+
+
+An in-\/memory key-\/value database with LRU caching and disk persistence.  
+
+
+
+
+{\ttfamily \#include $<$blinkdb.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlinkDB_a69140f26047029abd72d3e3354af0727}{Blink\+DB}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBlinkDB_a2bf225df41dbb50b8c6950cdcecde9ae}{$\sim$\+Blink\+DB}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}{set}} (const std\+::string \&key, const std\+::string \&value)
+\begin{DoxyCompactList}\small\item\em Sets a key-\/value pair in the database. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}{get}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Retrieves a value by key. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}{del}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Deletes a key-\/value pair from the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_af24c34dad7e212324f5b1d8cb3b5fb79}{persist\+To\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes all in-\/memory data to disk. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_aadfa832bbfc6fc1b5014b4923e96b8ec}{clear\+Persistence\+File}} ()
+\begin{DoxyCompactList}\small\item\em Deletes the persistence file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a1139d455a772614109900b45c0f95081}{flush\+To\+Disk\+Periodically}} ()
+\begin{DoxyCompactList}\small\item\em Background thread function that periodically flushes data to disk. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a5deac380889b1688e249a3fbb3743f9a}{flush\+To\+Disk\+Async}} ()
+\begin{DoxyCompactList}\small\item\em Asynchronously flushes data to disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBlinkDB_a764d8f57d14e4fe08d26a4d12b464897}{load\+From\+File}} ()
+\begin{DoxyCompactList}\small\item\em Loads data from persistence file into memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a242c99c29d77cfd6060cb3e578c23ccb}{update\+LRU}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Updates the LRU status of a key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkDB_a7b376b877afc7b20a412647dcfd8f339}{restore\+From\+Disk}} (const std\+::string \&key)
+\begin{DoxyCompactList}\small\item\em Restores an evicted key from disk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classBlinkDB_a708df9686c42f87fbdaf44b476ad7315}{store}}
+\begin{DoxyCompactList}\small\item\em Main storage for key-\/value pairs. \end{DoxyCompactList}\item 
+std\+::list$<$ std\+::string $>$ \mbox{\hyperlink{classBlinkDB_a50c9934dcc56a62dd54c724804f02da3}{lru\+\_\+keys}}
+\begin{DoxyCompactList}\small\item\em List maintaining LRU order of keys. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::list$<$ std\+::string $>$\+::iterator $>$ \mbox{\hyperlink{classBlinkDB_a13629025b379d8ea4f1c7faf1cf1652d}{lru\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em Map for quick access to keys\textquotesingle{} positions in the LRU list. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, bool $>$ \mbox{\hyperlink{classBlinkDB_a4365ade0091ad75336904cd5cdff971f}{evicted\+\_\+keys}}
+\begin{DoxyCompactList}\small\item\em Set of keys that have been evicted from memory but exist on disk. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+mutex \mbox{\hyperlink{classBlinkDB_a14f31ceaf09cb4029a3a0612f62e94fe}{db\+\_\+mutex}}
+\begin{DoxyCompactList}\small\item\em Mutex for thread-\/safe access to the database. \end{DoxyCompactList}\item 
+const size\+\_\+t \mbox{\hyperlink{classBlinkDB_a8de21aa973d6e933babe67a777e21048}{max\+\_\+cache\+\_\+size}} = \mbox{\hyperlink{blinkdb_8h_abc29155cbf8d3ba92a8cb487bbabdc66}{MAX\+\_\+\+CAPACITY}}
+\begin{DoxyCompactList}\small\item\em Maximum number of items to keep in memory. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classBlinkDB_ade2be520af6851efbad210054f4975e7}{persistence\+\_\+file}} = \mbox{\hyperlink{blinkdb_8h_a2771ac35d6931fcb27a2da28e6df3ad1}{FLUSH\+\_\+\+FILE}}
+\begin{DoxyCompactList}\small\item\em Path to the persistence file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBlinkDB_af9d4ae666fd78d099a491b4f5ae2de70}{dirty}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating whether data has been modified since last flush. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An in-\/memory key-\/value database with LRU caching and disk persistence. 
+
+\mbox{\hyperlink{classBlinkDB}{Blink\+DB}} implements a simple key-\/value store with an LRU (Least Recently Used) eviction policy. It provides persistence by periodically flushing data to disk and can restore evicted keys from disk when requested. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlinkDB_a69140f26047029abd72d3e3354af0727}\label{classBlinkDB_a69140f26047029abd72d3e3354af0727}} 
+\index{BlinkDB@{BlinkDB}!BlinkDB@{BlinkDB}}
+\index{BlinkDB@{BlinkDB}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{BlinkDB()}{BlinkDB()}}
+{\footnotesize\ttfamily Blink\+DB\+::\+Blink\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor implementation.
+
+Initializes the database and starts the background flush thread
+
+Loads existing data from disk and starts the background flush thread \mbox{\Hypertarget{classBlinkDB_a2bf225df41dbb50b8c6950cdcecde9ae}\label{classBlinkDB_a2bf225df41dbb50b8c6950cdcecde9ae}} 
+\index{BlinkDB@{BlinkDB}!````~BlinkDB@{$\sim$BlinkDB}}
+\index{````~BlinkDB@{$\sim$BlinkDB}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{$\sim$BlinkDB()}{~BlinkDB()}}
+{\footnotesize\ttfamily Blink\+DB\+::$\sim$\+Blink\+DB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Destructor implementation.
+
+Ensures any pending changes are persisted to disk
+
+Ensures any unsaved changes are written to disk 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlinkDB_aadfa832bbfc6fc1b5014b4923e96b8ec}\label{classBlinkDB_aadfa832bbfc6fc1b5014b4923e96b8ec}} 
+\index{BlinkDB@{BlinkDB}!clearPersistenceFile@{clearPersistenceFile}}
+\index{clearPersistenceFile@{clearPersistenceFile}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{clearPersistenceFile()}{clearPersistenceFile()}}
+{\footnotesize\ttfamily void Blink\+DB\+::clear\+Persistence\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deletes the persistence file. 
+
+Removes the persistence file from disk. \mbox{\Hypertarget{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}\label{classBlinkDB_a518685f4f427530f71e8202f95d85f6c}} 
+\index{BlinkDB@{BlinkDB}!del@{del}}
+\index{del@{del}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{del()}{del()}}
+{\footnotesize\ttfamily bool Blink\+DB\+::del (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Deletes a key-\/value pair from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the key was found and deleted, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkDB_a5deac380889b1688e249a3fbb3743f9a}\label{classBlinkDB_a5deac380889b1688e249a3fbb3743f9a}} 
+\index{BlinkDB@{BlinkDB}!flushToDiskAsync@{flushToDiskAsync}}
+\index{flushToDiskAsync@{flushToDiskAsync}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{flushToDiskAsync()}{flushToDiskAsync()}}
+{\footnotesize\ttfamily void Blink\+DB\+::flush\+To\+Disk\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Asynchronously flushes data to disk. 
+
+\mbox{\Hypertarget{classBlinkDB_a1139d455a772614109900b45c0f95081}\label{classBlinkDB_a1139d455a772614109900b45c0f95081}} 
+\index{BlinkDB@{BlinkDB}!flushToDiskPeriodically@{flushToDiskPeriodically}}
+\index{flushToDiskPeriodically@{flushToDiskPeriodically}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{flushToDiskPeriodically()}{flushToDiskPeriodically()}}
+{\footnotesize\ttfamily void Blink\+DB\+::flush\+To\+Disk\+Periodically (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Background thread function that periodically flushes data to disk. 
+
+\mbox{\Hypertarget{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}\label{classBlinkDB_af9a9eae004f2a782e17edd65394d58e6}} 
+\index{BlinkDB@{BlinkDB}!get@{get}}
+\index{get@{get}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily std\+::string Blink\+DB\+::get (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Retrieves a value by key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to look up \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key, or \char`\"{}\+NULL\char`\"{} if not found 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkDB_a764d8f57d14e4fe08d26a4d12b464897}\label{classBlinkDB_a764d8f57d14e4fe08d26a4d12b464897}} 
+\index{BlinkDB@{BlinkDB}!loadFromFile@{loadFromFile}}
+\index{loadFromFile@{loadFromFile}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{loadFromFile()}{loadFromFile()}}
+{\footnotesize\ttfamily void Blink\+DB\+::load\+From\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads data from persistence file into memory. 
+
+\mbox{\Hypertarget{classBlinkDB_af24c34dad7e212324f5b1d8cb3b5fb79}\label{classBlinkDB_af24c34dad7e212324f5b1d8cb3b5fb79}} 
+\index{BlinkDB@{BlinkDB}!persistToFile@{persistToFile}}
+\index{persistToFile@{persistToFile}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{persistToFile()}{persistToFile()}}
+{\footnotesize\ttfamily void Blink\+DB\+::persist\+To\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes all in-\/memory data to disk. 
+
+\mbox{\Hypertarget{classBlinkDB_a7b376b877afc7b20a412647dcfd8f339}\label{classBlinkDB_a7b376b877afc7b20a412647dcfd8f339}} 
+\index{BlinkDB@{BlinkDB}!restoreFromDisk@{restoreFromDisk}}
+\index{restoreFromDisk@{restoreFromDisk}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{restoreFromDisk()}{restoreFromDisk()}}
+{\footnotesize\ttfamily void Blink\+DB\+::restore\+From\+Disk (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Restores an evicted key from disk. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to restore \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}\label{classBlinkDB_a48fdabd2e183729f2bc6d6262d83379e}} 
+\index{BlinkDB@{BlinkDB}!set@{set}}
+\index{set@{set}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Blink\+DB\+::set (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a key-\/value pair in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to set \\
+\hline
+{\em value} & The value to associate with the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBlinkDB_a242c99c29d77cfd6060cb3e578c23ccb}\label{classBlinkDB_a242c99c29d77cfd6060cb3e578c23ccb}} 
+\index{BlinkDB@{BlinkDB}!updateLRU@{updateLRU}}
+\index{updateLRU@{updateLRU}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{updateLRU()}{updateLRU()}}
+{\footnotesize\ttfamily void Blink\+DB\+::update\+LRU (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the LRU status of a key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key to update in the LRU cache\\
+\hline
+{\em key} & The key to update in the LRU cache\\
+\hline
+\end{DoxyParams}
+Moves the key to the front of the LRU list and handles eviction if needed 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBlinkDB_a14f31ceaf09cb4029a3a0612f62e94fe}\label{classBlinkDB_a14f31ceaf09cb4029a3a0612f62e94fe}} 
+\index{BlinkDB@{BlinkDB}!db\_mutex@{db\_mutex}}
+\index{db\_mutex@{db\_mutex}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{db\_mutex}{db\_mutex}}
+{\footnotesize\ttfamily std\+::shared\+\_\+mutex Blink\+DB\+::db\+\_\+mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Mutex for thread-\/safe access to the database. 
+
+\mbox{\Hypertarget{classBlinkDB_af9d4ae666fd78d099a491b4f5ae2de70}\label{classBlinkDB_af9d4ae666fd78d099a491b4f5ae2de70}} 
+\index{BlinkDB@{BlinkDB}!dirty@{dirty}}
+\index{dirty@{dirty}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{dirty}{dirty}}
+{\footnotesize\ttfamily bool Blink\+DB\+::dirty = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag indicating whether data has been modified since last flush. 
+
+\mbox{\Hypertarget{classBlinkDB_a4365ade0091ad75336904cd5cdff971f}\label{classBlinkDB_a4365ade0091ad75336904cd5cdff971f}} 
+\index{BlinkDB@{BlinkDB}!evicted\_keys@{evicted\_keys}}
+\index{evicted\_keys@{evicted\_keys}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{evicted\_keys}{evicted\_keys}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, bool$>$ Blink\+DB\+::evicted\+\_\+keys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Set of keys that have been evicted from memory but exist on disk. 
+
+\mbox{\Hypertarget{classBlinkDB_a50c9934dcc56a62dd54c724804f02da3}\label{classBlinkDB_a50c9934dcc56a62dd54c724804f02da3}} 
+\index{BlinkDB@{BlinkDB}!lru\_keys@{lru\_keys}}
+\index{lru\_keys@{lru\_keys}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{lru\_keys}{lru\_keys}}
+{\footnotesize\ttfamily std\+::list$<$std\+::string$>$ Blink\+DB\+::lru\+\_\+keys\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List maintaining LRU order of keys. 
+
+\mbox{\Hypertarget{classBlinkDB_a13629025b379d8ea4f1c7faf1cf1652d}\label{classBlinkDB_a13629025b379d8ea4f1c7faf1cf1652d}} 
+\index{BlinkDB@{BlinkDB}!lru\_map@{lru\_map}}
+\index{lru\_map@{lru\_map}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{lru\_map}{lru\_map}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::list$<$std\+::string$>$\+::iterator$>$ Blink\+DB\+::lru\+\_\+map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map for quick access to keys\textquotesingle{} positions in the LRU list. 
+
+\mbox{\Hypertarget{classBlinkDB_a8de21aa973d6e933babe67a777e21048}\label{classBlinkDB_a8de21aa973d6e933babe67a777e21048}} 
+\index{BlinkDB@{BlinkDB}!max\_cache\_size@{max\_cache\_size}}
+\index{max\_cache\_size@{max\_cache\_size}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{max\_cache\_size}{max\_cache\_size}}
+{\footnotesize\ttfamily const size\+\_\+t Blink\+DB\+::max\+\_\+cache\+\_\+size = \mbox{\hyperlink{blinkdb_8h_abc29155cbf8d3ba92a8cb487bbabdc66}{MAX\+\_\+\+CAPACITY}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Maximum number of items to keep in memory. 
+
+\mbox{\Hypertarget{classBlinkDB_ade2be520af6851efbad210054f4975e7}\label{classBlinkDB_ade2be520af6851efbad210054f4975e7}} 
+\index{BlinkDB@{BlinkDB}!persistence\_file@{persistence\_file}}
+\index{persistence\_file@{persistence\_file}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{persistence\_file}{persistence\_file}}
+{\footnotesize\ttfamily const std\+::string Blink\+DB\+::persistence\+\_\+file = \mbox{\hyperlink{blinkdb_8h_a2771ac35d6931fcb27a2da28e6df3ad1}{FLUSH\+\_\+\+FILE}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Path to the persistence file. 
+
+\mbox{\Hypertarget{classBlinkDB_a708df9686c42f87fbdaf44b476ad7315}\label{classBlinkDB_a708df9686c42f87fbdaf44b476ad7315}} 
+\index{BlinkDB@{BlinkDB}!store@{store}}
+\index{store@{store}!BlinkDB@{BlinkDB}}
+\doxysubsubsection{\texorpdfstring{store}{store}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::string$>$ Blink\+DB\+::store\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Main storage for key-\/value pairs. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{blinkdb_8h}{blinkdb.\+h}}\item 
+src/\mbox{\hyperlink{blinkdb_8cpp}{blinkdb.\+cpp}}\end{DoxyCompactItemize}

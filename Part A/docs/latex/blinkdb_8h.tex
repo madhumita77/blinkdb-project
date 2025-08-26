@@ -1,0 +1,77 @@
+\hypertarget{blinkdb_8h}{}\doxysection{src/blinkdb.h File Reference}
+\label{blinkdb_8h}\index{src/blinkdb.h@{src/blinkdb.h}}
+
+
+Header file for the \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} in-\/memory database with LRU caching.  
+
+
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$shared\+\_\+mutex$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$future$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+Include dependency graph for blinkdb.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}
+\begin{DoxyCompactList}\small\item\em An in-\/memory key-\/value database with LRU caching and disk persistence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{blinkdb_8h_a7109febe139a7277e20652049ec9a1e1}{VALUE\+\_\+\+SIZE}}~256
+\item 
+\#define \mbox{\hyperlink{blinkdb_8h_abc29155cbf8d3ba92a8cb487bbabdc66}{MAX\+\_\+\+CAPACITY}}~10000
+\item 
+\#define \mbox{\hyperlink{blinkdb_8h_a2771ac35d6931fcb27a2da28e6df3ad1}{FLUSH\+\_\+\+FILE}}~\char`\"{}flush\+\_\+data.\+txt\char`\"{}
+\item 
+\#define \mbox{\hyperlink{blinkdb_8h_a223f845abc58a5d8725daed2e27f67a9}{COMPACTION\+\_\+\+THRESHOLD}}~1000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} in-\/memory database with LRU caching. 
+
+\begin{DoxyAuthor}{Author}
+Madhumita 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/03-\/31 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{blinkdb_8h_a223f845abc58a5d8725daed2e27f67a9}\label{blinkdb_8h_a223f845abc58a5d8725daed2e27f67a9}} 
+\index{blinkdb.h@{blinkdb.h}!COMPACTION\_THRESHOLD@{COMPACTION\_THRESHOLD}}
+\index{COMPACTION\_THRESHOLD@{COMPACTION\_THRESHOLD}!blinkdb.h@{blinkdb.h}}
+\doxysubsubsection{\texorpdfstring{COMPACTION\_THRESHOLD}{COMPACTION\_THRESHOLD}}
+{\footnotesize\ttfamily \#define COMPACTION\+\_\+\+THRESHOLD~1000}
+
+\mbox{\Hypertarget{blinkdb_8h_a2771ac35d6931fcb27a2da28e6df3ad1}\label{blinkdb_8h_a2771ac35d6931fcb27a2da28e6df3ad1}} 
+\index{blinkdb.h@{blinkdb.h}!FLUSH\_FILE@{FLUSH\_FILE}}
+\index{FLUSH\_FILE@{FLUSH\_FILE}!blinkdb.h@{blinkdb.h}}
+\doxysubsubsection{\texorpdfstring{FLUSH\_FILE}{FLUSH\_FILE}}
+{\footnotesize\ttfamily \#define FLUSH\+\_\+\+FILE~\char`\"{}flush\+\_\+data.\+txt\char`\"{}}
+
+\mbox{\Hypertarget{blinkdb_8h_abc29155cbf8d3ba92a8cb487bbabdc66}\label{blinkdb_8h_abc29155cbf8d3ba92a8cb487bbabdc66}} 
+\index{blinkdb.h@{blinkdb.h}!MAX\_CAPACITY@{MAX\_CAPACITY}}
+\index{MAX\_CAPACITY@{MAX\_CAPACITY}!blinkdb.h@{blinkdb.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_CAPACITY}{MAX\_CAPACITY}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+CAPACITY~10000}
+
+\mbox{\Hypertarget{blinkdb_8h_a7109febe139a7277e20652049ec9a1e1}\label{blinkdb_8h_a7109febe139a7277e20652049ec9a1e1}} 
+\index{blinkdb.h@{blinkdb.h}!VALUE\_SIZE@{VALUE\_SIZE}}
+\index{VALUE\_SIZE@{VALUE\_SIZE}!blinkdb.h@{blinkdb.h}}
+\doxysubsubsection{\texorpdfstring{VALUE\_SIZE}{VALUE\_SIZE}}
+{\footnotesize\ttfamily \#define VALUE\+\_\+\+SIZE~256}
+

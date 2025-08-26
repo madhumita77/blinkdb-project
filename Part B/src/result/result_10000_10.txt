@@ -1,0 +1,29 @@
+SET: -nan====== SET ======
+  10000 requests completed in 0.08 seconds
+  10 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+93.87% <= 0.1 milliseconds
+99.38% <= 0.2 milliseconds
+99.87% <= 0.3 milliseconds
+99.89% <= 0.4 milliseconds
+99.91% <= 0.5 milliseconds
+100.00% <= 0.5 milliseconds
+128205.12 requests per second
+
+====== GET ======
+  10000 requests completed in 0.07 seconds
+  10 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+99.19% <= 0.1 milliseconds
+99.78% <= 0.2 milliseconds
+99.94% <= 0.3 milliseconds
+100.00% <= 0.3 milliseconds
+144927.55 requests per second
+
+

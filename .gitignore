@@ -1,0 +1,26 @@
+# Build artifacts
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.dylib
+
+# Binaries
+/Part-A/src/benchmark
+/Part-A/src/repl
+/Part-B/src/blink_server
+/Part-B/src/load_balancer
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Doxygen generated files
+/docs/html/
+/docs/latex/
+
+# OS junk
+.DS_Store
+Thumbs.db

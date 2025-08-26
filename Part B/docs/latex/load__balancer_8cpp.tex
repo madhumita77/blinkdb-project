@@ -1,0 +1,64 @@
+\hypertarget{load__balancer_8cpp}{}\doxysection{src/load\+\_\+balancer.cpp File Reference}
+\label{load__balancer_8cpp}\index{src/load\_balancer.cpp@{src/load\_balancer.cpp}}
+
+
+Implementation of a load balancer for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} servers.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$poll.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+Include dependency graph for load\+\_\+balancer.\+cpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLoadBalancer}{Load\+Balancer}}
+\begin{DoxyCompactList}\small\item\em Implements a round-\/robin load balancer for multiple backend servers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{load__balancer_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of a load balancer for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} servers. 
+
+\begin{DoxyAuthor}{Author}
+Madhumita 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/03-\/31
+\end{DoxyDate}
+This file implements a load balancer that distributes client connections between multiple \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} server instances using a round-\/robin algorithm. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{load__balancer_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{load__balancer_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{load\_balancer.cpp@{load\_balancer.cpp}!main@{main}}
+\index{main@{main}!load\_balancer.cpp@{load\_balancer.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments \\
+\hline
+{\em argv} & Array of command-\/line arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Exit code (0 for success, 1 for failure)
+\end{DoxyReturn}
+Parses command-\/line arguments and starts the load balancer with the specified configuration. 

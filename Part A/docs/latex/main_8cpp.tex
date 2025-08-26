@@ -1,0 +1,56 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+REPL interface for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}.  
+
+
+{\ttfamily \#include \char`\"{}blinkdb.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function implementing a REPL for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+REPL interface for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}. 
+
+\begin{DoxyAuthor}{Author}
+Madhumita 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/03-\/31
+\end{DoxyDate}
+Compilation\+: g++ -\/std=c++17 -\/lpthread \mbox{\hyperlink{blinkdb_8cpp}{blinkdb.\+cpp}} \mbox{\hyperlink{benchmark_8cpp}{benchmark.\+cpp}} -\/o benchmark Execution\+: ./benchmark 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function implementing a REPL for \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}. 
+
+\begin{DoxyReturn}{Returns}
+Exit code
+\end{DoxyReturn}
+Provides a command-\/line interface for interacting with \mbox{\hyperlink{classBlinkDB}{Blink\+DB}}. Supported commands\+:
+\begin{DoxyItemize}
+\item SET $<$key$>$ 
+\end{DoxyItemize}
+
+\+: Sets a key-\/value pair
+\begin{DoxyItemize}
+\item GET $<$key$>$\+: Retrieves a value by key
+\item DEL $<$key$>$\+: Deletes a key-\/value pair
+\item EXIT/\+QUIT\+: Exits the program 
+\end{DoxyItemize}

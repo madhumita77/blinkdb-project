@@ -1,0 +1,235 @@
+\begin{theindex}
+
+  \item {\_\_BLINK\_SERVER\_H}
+    \subitem {blink\_server.h}, \hyperpage{24}
+  \item {$\sim$BlinkDB}
+    \subitem {BlinkDB}, \hyperpage{6}
+  \item {$\sim$BlinkServer}
+    \subitem {BlinkServer}, \hyperpage{12}
+  \item {$\sim$LoadBalancer}
+    \subitem {LoadBalancer}, \hyperpage{20}
+
+  \indexspace
+
+  \item {address}
+    \subitem {BlinkServer}, \hyperpage{17}
+    \subitem {LoadBalancer}, \hyperpage{21}
+
+  \indexspace
+
+  \item {blink\_server.h}
+    \subitem {\_\_BLINK\_SERVER\_H}, \hyperpage{24}
+  \item {BlinkDB}, \hyperpage{5}
+    \subitem {$\sim$BlinkDB}, \hyperpage{6}
+    \subitem {BlinkDB}, \hyperpage{6}
+    \subitem {clearPersistenceFile}, \hyperpage{7}
+    \subitem {db\_mutex}, \hyperpage{9}
+    \subitem {del}, \hyperpage{7}
+    \subitem {dirty}, \hyperpage{9}
+    \subitem {evicted\_keys}, \hyperpage{9}
+    \subitem {flushToDiskAsync}, \hyperpage{7}
+    \subitem {flushToDiskPeriodically}, \hyperpage{7}
+    \subitem {get}, \hyperpage{7}
+    \subitem {loadFromFile}, \hyperpage{8}
+    \subitem {lru\_keys}, \hyperpage{9}
+    \subitem {lru\_map}, \hyperpage{10}
+    \subitem {max\_cache\_size}, \hyperpage{10}
+    \subitem {persistence\_file}, \hyperpage{10}
+    \subitem {persistToFile}, \hyperpage{8}
+    \subitem {restoreFromDisk}, \hyperpage{8}
+    \subitem {set}, \hyperpage{8}
+    \subitem {store}, \hyperpage{10}
+    \subitem {updateLRU}, \hyperpage{9}
+  \item {blinkdb.h}
+    \subitem {COMPACTION\_THRESHOLD}, \hyperpage{25}
+    \subitem {FLUSH\_FILE}, \hyperpage{26}
+    \subitem {MAX\_CAPACITY}, \hyperpage{26}
+    \subitem {VALUE\_SIZE}, \hyperpage{26}
+  \item {BlinkServer}, \hyperpage{10}
+    \subitem {$\sim$BlinkServer}, \hyperpage{12}
+    \subitem {address}, \hyperpage{17}
+    \subitem {BlinkServer}, \hyperpage{12}
+    \subitem {database}, \hyperpage{17}
+    \subitem {decodeCommand}, \hyperpage{12}
+    \subitem {encodeBulkString}, \hyperpage{13}
+    \subitem {encodeError}, \hyperpage{13}
+    \subitem {encodeInteger}, \hyperpage{13}
+    \subitem {encodeSimpleString}, \hyperpage{14}
+    \subitem {handleClientConnections}, \hyperpage{14}
+    \subitem {handleClientRead}, \hyperpage{14}
+    \subitem {handleCommand}, \hyperpage{15}
+    \subitem {MAX\_CLIENTS}, \hyperpage{17}
+    \subitem {PORT}, \hyperpage{18}
+    \subitem {processDel}, \hyperpage{15}
+    \subitem {processGet}, \hyperpage{16}
+    \subitem {processSet}, \hyperpage{16}
+    \subitem {server\_fd}, \hyperpage{18}
+    \subitem {setupServer}, \hyperpage{17}
+    \subitem {start}, \hyperpage{17}
+
+  \indexspace
+
+  \item {clearPersistenceFile}
+    \subitem {BlinkDB}, \hyperpage{7}
+  \item {COMPACTION\_THRESHOLD}
+    \subitem {blinkdb.h}, \hyperpage{25}
+  \item {connectToBackend}
+    \subitem {LoadBalancer}, \hyperpage{20}
+  \item {current\_server}
+    \subitem {LoadBalancer}, \hyperpage{21}
+
+  \indexspace
+
+  \item {database}
+    \subitem {BlinkServer}, \hyperpage{17}
+  \item {db\_mutex}
+    \subitem {BlinkDB}, \hyperpage{9}
+  \item {decodeCommand}
+    \subitem {BlinkServer}, \hyperpage{12}
+  \item {del}
+    \subitem {BlinkDB}, \hyperpage{7}
+  \item {dirty}
+    \subitem {BlinkDB}, \hyperpage{9}
+
+  \indexspace
+
+  \item {encodeBulkString}
+    \subitem {BlinkServer}, \hyperpage{13}
+  \item {encodeError}
+    \subitem {BlinkServer}, \hyperpage{13}
+  \item {encodeInteger}
+    \subitem {BlinkServer}, \hyperpage{13}
+  \item {encodeSimpleString}
+    \subitem {BlinkServer}, \hyperpage{14}
+  \item {evicted\_keys}
+    \subitem {BlinkDB}, \hyperpage{9}
+
+  \indexspace
+
+  \item {FLUSH\_FILE}
+    \subitem {blinkdb.h}, \hyperpage{26}
+  \item {flushToDiskAsync}
+    \subitem {BlinkDB}, \hyperpage{7}
+  \item {flushToDiskPeriodically}
+    \subitem {BlinkDB}, \hyperpage{7}
+
+  \indexspace
+
+  \item {get}
+    \subitem {BlinkDB}, \hyperpage{7}
+
+  \indexspace
+
+  \item {handleClient}
+    \subitem {LoadBalancer}, \hyperpage{20}
+  \item {handleClientConnections}
+    \subitem {BlinkServer}, \hyperpage{14}
+  \item {handleClientRead}
+    \subitem {BlinkServer}, \hyperpage{14}
+  \item {handleCommand}
+    \subitem {BlinkServer}, \hyperpage{15}
+
+  \indexspace
+
+  \item {load\_balancer.cpp}
+    \subitem {main}, \hyperpage{27}
+  \item {LoadBalancer}, \hyperpage{18}
+    \subitem {$\sim$LoadBalancer}, \hyperpage{20}
+    \subitem {address}, \hyperpage{21}
+    \subitem {connectToBackend}, \hyperpage{20}
+    \subitem {current\_server}, \hyperpage{21}
+    \subitem {handleClient}, \hyperpage{20}
+    \subitem {LoadBalancer}, \hyperpage{19}
+    \subitem {MAX\_CLIENTS}, \hyperpage{21}
+    \subitem {PORT}, \hyperpage{21}
+    \subitem {server1\_ip}, \hyperpage{22}
+    \subitem {server1\_port}, \hyperpage{22}
+    \subitem {server2\_ip}, \hyperpage{22}
+    \subitem {server2\_port}, \hyperpage{22}
+    \subitem {server\_fd}, \hyperpage{22}
+    \subitem {setupServer}, \hyperpage{21}
+    \subitem {start}, \hyperpage{21}
+  \item {loadFromFile}
+    \subitem {BlinkDB}, \hyperpage{8}
+  \item {lru\_keys}
+    \subitem {BlinkDB}, \hyperpage{9}
+  \item {lru\_map}
+    \subitem {BlinkDB}, \hyperpage{10}
+
+  \indexspace
+
+  \item {main}
+    \subitem {load\_balancer.cpp}, \hyperpage{27}
+    \subitem {main.cpp}, \hyperpage{28}
+  \item {main.cpp}
+    \subitem {main}, \hyperpage{28}
+  \item {max\_cache\_size}
+    \subitem {BlinkDB}, \hyperpage{10}
+  \item {MAX\_CAPACITY}
+    \subitem {blinkdb.h}, \hyperpage{26}
+  \item {MAX\_CLIENTS}
+    \subitem {BlinkServer}, \hyperpage{17}
+    \subitem {LoadBalancer}, \hyperpage{21}
+
+  \indexspace
+
+  \item {persistence\_file}
+    \subitem {BlinkDB}, \hyperpage{10}
+  \item {persistToFile}
+    \subitem {BlinkDB}, \hyperpage{8}
+  \item {PORT}
+    \subitem {BlinkServer}, \hyperpage{18}
+    \subitem {LoadBalancer}, \hyperpage{21}
+  \item {processDel}
+    \subitem {BlinkServer}, \hyperpage{15}
+  \item {processGet}
+    \subitem {BlinkServer}, \hyperpage{16}
+  \item {processSet}
+    \subitem {BlinkServer}, \hyperpage{16}
+
+  \indexspace
+
+  \item {restoreFromDisk}
+    \subitem {BlinkDB}, \hyperpage{8}
+
+  \indexspace
+
+  \item {server1\_ip}
+    \subitem {LoadBalancer}, \hyperpage{22}
+  \item {server1\_port}
+    \subitem {LoadBalancer}, \hyperpage{22}
+  \item {server2\_ip}
+    \subitem {LoadBalancer}, \hyperpage{22}
+  \item {server2\_port}
+    \subitem {LoadBalancer}, \hyperpage{22}
+  \item {server\_fd}
+    \subitem {BlinkServer}, \hyperpage{18}
+    \subitem {LoadBalancer}, \hyperpage{22}
+  \item {set}
+    \subitem {BlinkDB}, \hyperpage{8}
+  \item {setupServer}
+    \subitem {BlinkServer}, \hyperpage{17}
+    \subitem {LoadBalancer}, \hyperpage{21}
+  \item {src/blink\_server.cpp}, \hyperpage{23}
+  \item {src/blink\_server.h}, \hyperpage{23}
+  \item {src/blinkdb.cpp}, \hyperpage{24}
+  \item {src/blinkdb.h}, \hyperpage{25}
+  \item {src/load\_balancer.cpp}, \hyperpage{26}
+  \item {src/main.cpp}, \hyperpage{27}
+  \item {start}
+    \subitem {BlinkServer}, \hyperpage{17}
+    \subitem {LoadBalancer}, \hyperpage{21}
+  \item {store}
+    \subitem {BlinkDB}, \hyperpage{10}
+
+  \indexspace
+
+  \item {updateLRU}
+    \subitem {BlinkDB}, \hyperpage{9}
+
+  \indexspace
+
+  \item {VALUE\_SIZE}
+    \subitem {blinkdb.h}, \hyperpage{26}
+
+\end{theindex}

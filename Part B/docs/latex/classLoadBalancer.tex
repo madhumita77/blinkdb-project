@@ -1,0 +1,236 @@
+\hypertarget{classLoadBalancer}{}\doxysection{Load\+Balancer Class Reference}
+\label{classLoadBalancer}\index{LoadBalancer@{LoadBalancer}}
+
+
+Implements a round-\/robin load balancer for multiple backend servers.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLoadBalancer_a7b7be801df983daa22eca407dd77f4da}{Load\+Balancer}} (int port, const std\+::string \&s1\+\_\+ip, int s1\+\_\+port, const std\+::string \&s2\+\_\+ip, int s2\+\_\+port)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLoadBalancer_a69951a7bb77be7fafd4d5ad6919abd80}{$\sim$\+Load\+Balancer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_af2dddbe6250ec577b2b3ce3a39986c30}{setup\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the server socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_a3a9cd14b924adaacbb264a9e09f5ed1d}{connect\+To\+Backend}} ()
+\begin{DoxyCompactList}\small\item\em Connects to a backend server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a17dfe2ffbe93e935973e02c2fc4444f9}{handle\+Client}} (int client\+\_\+socket)
+\begin{DoxyCompactList}\small\item\em Handles communication between a client and a backend server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a073e7ff1b09d27fc13a9d2b0edcd1343}{start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the load balancer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classLoadBalancer_a9ded46dafb4e69863615a6b9ea2e4240}{server\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Server socket file descriptor. \end{DoxyCompactList}\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{classLoadBalancer_a550b101787b7b7ec101af33abcf21132}{address}}
+\begin{DoxyCompactList}\small\item\em Server address structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_a0a31b1131d653574f06241bd13032a39}{PORT}}
+\begin{DoxyCompactList}\small\item\em Port number the load balancer listens on. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLoadBalancer_a17c8aadde5e15de253966fce314c22f1}{server1\+\_\+ip}}
+\begin{DoxyCompactList}\small\item\em IP address of the first backend server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_abf0633e24da47ea844c1e0a04c3c8f6b}{server1\+\_\+port}}
+\begin{DoxyCompactList}\small\item\em Port number of the first backend server. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLoadBalancer_af05375da351b68f1062ed35698b16d0d}{server2\+\_\+ip}}
+\begin{DoxyCompactList}\small\item\em IP address of the second backend server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_a0e17cbac3cce1966175ad6a6553301ee}{server2\+\_\+port}}
+\begin{DoxyCompactList}\small\item\em Port number of the second backend server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_a21c29e6327072db9ccb48e1ec9f5634a}{current\+\_\+server}}
+\begin{DoxyCompactList}\small\item\em Counter for round-\/robin server selection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classLoadBalancer_a8fc3eb76c62560f2a936517bd89f996c}{MAX\+\_\+\+CLIENTS}} = 2000
+\begin{DoxyCompactList}\small\item\em Maximum number of simultaneous client connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements a round-\/robin load balancer for multiple backend servers. 
+
+This class distributes incoming client connections between multiple backend servers using a round-\/robin algorithm. It forwards data between clients and backend servers transparently. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLoadBalancer_a7b7be801df983daa22eca407dd77f4da}\label{classLoadBalancer_a7b7be801df983daa22eca407dd77f4da}} 
+\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{LoadBalancer()}{LoadBalancer()}}
+{\footnotesize\ttfamily Load\+Balancer\+::\+Load\+Balancer (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{const std\+::string \&}]{s1\+\_\+ip,  }\item[{int}]{s1\+\_\+port,  }\item[{const std\+::string \&}]{s2\+\_\+ip,  }\item[{int}]{s2\+\_\+port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & Port number for the load balancer \\
+\hline
+{\em s1\+\_\+ip} & IP address of the first backend server \\
+\hline
+{\em s1\+\_\+port} & Port number of the first backend server \\
+\hline
+{\em s2\+\_\+ip} & IP address of the second backend server \\
+\hline
+{\em s2\+\_\+port} & Port number of the second backend server\\
+\hline
+\end{DoxyParams}
+Initializes the load balancer with the specified port and backend server details. \mbox{\Hypertarget{classLoadBalancer_a69951a7bb77be7fafd4d5ad6919abd80}\label{classLoadBalancer_a69951a7bb77be7fafd4d5ad6919abd80}} 
+\index{LoadBalancer@{LoadBalancer}!````~LoadBalancer@{$\sim$LoadBalancer}}
+\index{````~LoadBalancer@{$\sim$LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{$\sim$LoadBalancer()}{~LoadBalancer()}}
+{\footnotesize\ttfamily Load\+Balancer\+::$\sim$\+Load\+Balancer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor. 
+
+Closes the server socket. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoadBalancer_a3a9cd14b924adaacbb264a9e09f5ed1d}\label{classLoadBalancer_a3a9cd14b924adaacbb264a9e09f5ed1d}} 
+\index{LoadBalancer@{LoadBalancer}!connectToBackend@{connectToBackend}}
+\index{connectToBackend@{connectToBackend}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{connectToBackend()}{connectToBackend()}}
+{\footnotesize\ttfamily int Load\+Balancer\+::connect\+To\+Backend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Connects to a backend server. 
+
+\begin{DoxyReturn}{Returns}
+Socket file descriptor for the backend connection, or -\/1 on failure
+\end{DoxyReturn}
+Selects a backend server using round-\/robin and establishes a connection to it. \mbox{\Hypertarget{classLoadBalancer_a17dfe2ffbe93e935973e02c2fc4444f9}\label{classLoadBalancer_a17dfe2ffbe93e935973e02c2fc4444f9}} 
+\index{LoadBalancer@{LoadBalancer}!handleClient@{handleClient}}
+\index{handleClient@{handleClient}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{handleClient()}{handleClient()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::handle\+Client (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Handles communication between a client and a backend server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & Socket file descriptor for the client connection\\
+\hline
+\end{DoxyParams}
+Establishes a connection to a backend server and forwards data between the client and the selected backend server. \mbox{\Hypertarget{classLoadBalancer_af2dddbe6250ec577b2b3ce3a39986c30}\label{classLoadBalancer_af2dddbe6250ec577b2b3ce3a39986c30}} 
+\index{LoadBalancer@{LoadBalancer}!setupServer@{setupServer}}
+\index{setupServer@{setupServer}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{setupServer()}{setupServer()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::setup\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets up the server socket. 
+
+Creates and configures the server socket, binds it to the port, and starts listening for connections. \mbox{\Hypertarget{classLoadBalancer_a073e7ff1b09d27fc13a9d2b0edcd1343}\label{classLoadBalancer_a073e7ff1b09d27fc13a9d2b0edcd1343}} 
+\index{LoadBalancer@{LoadBalancer}!start@{start}}
+\index{start@{start}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Starts the load balancer. 
+
+Main event loop that accepts client connections and handles them by creating a new process for each connection. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLoadBalancer_a550b101787b7b7ec101af33abcf21132}\label{classLoadBalancer_a550b101787b7b7ec101af33abcf21132}} 
+\index{LoadBalancer@{LoadBalancer}!address@{address}}
+\index{address@{address}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in Load\+Balancer\+::address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Server address structure. 
+
+\mbox{\Hypertarget{classLoadBalancer_a21c29e6327072db9ccb48e1ec9f5634a}\label{classLoadBalancer_a21c29e6327072db9ccb48e1ec9f5634a}} 
+\index{LoadBalancer@{LoadBalancer}!current\_server@{current\_server}}
+\index{current\_server@{current\_server}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{current\_server}{current\_server}}
+{\footnotesize\ttfamily int Load\+Balancer\+::current\+\_\+server\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Counter for round-\/robin server selection. 
+
+\mbox{\Hypertarget{classLoadBalancer_a8fc3eb76c62560f2a936517bd89f996c}\label{classLoadBalancer_a8fc3eb76c62560f2a936517bd89f996c}} 
+\index{LoadBalancer@{LoadBalancer}!MAX\_CLIENTS@{MAX\_CLIENTS}}
+\index{MAX\_CLIENTS@{MAX\_CLIENTS}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{MAX\_CLIENTS}{MAX\_CLIENTS}}
+{\footnotesize\ttfamily const int Load\+Balancer\+::\+MAX\+\_\+\+CLIENTS = 2000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Maximum number of simultaneous client connections. 
+
+\mbox{\Hypertarget{classLoadBalancer_a0a31b1131d653574f06241bd13032a39}\label{classLoadBalancer_a0a31b1131d653574f06241bd13032a39}} 
+\index{LoadBalancer@{LoadBalancer}!PORT@{PORT}}
+\index{PORT@{PORT}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily int Load\+Balancer\+::\+PORT\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Port number the load balancer listens on. 
+
+\mbox{\Hypertarget{classLoadBalancer_a17c8aadde5e15de253966fce314c22f1}\label{classLoadBalancer_a17c8aadde5e15de253966fce314c22f1}} 
+\index{LoadBalancer@{LoadBalancer}!server1\_ip@{server1\_ip}}
+\index{server1\_ip@{server1\_ip}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{server1\_ip}{server1\_ip}}
+{\footnotesize\ttfamily std\+::string Load\+Balancer\+::server1\+\_\+ip\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+IP address of the first backend server. 
+
+\mbox{\Hypertarget{classLoadBalancer_abf0633e24da47ea844c1e0a04c3c8f6b}\label{classLoadBalancer_abf0633e24da47ea844c1e0a04c3c8f6b}} 
+\index{LoadBalancer@{LoadBalancer}!server1\_port@{server1\_port}}
+\index{server1\_port@{server1\_port}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{server1\_port}{server1\_port}}
+{\footnotesize\ttfamily int Load\+Balancer\+::server1\+\_\+port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Port number of the first backend server. 
+
+\mbox{\Hypertarget{classLoadBalancer_af05375da351b68f1062ed35698b16d0d}\label{classLoadBalancer_af05375da351b68f1062ed35698b16d0d}} 
+\index{LoadBalancer@{LoadBalancer}!server2\_ip@{server2\_ip}}
+\index{server2\_ip@{server2\_ip}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{server2\_ip}{server2\_ip}}
+{\footnotesize\ttfamily std\+::string Load\+Balancer\+::server2\+\_\+ip\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+IP address of the second backend server. 
+
+\mbox{\Hypertarget{classLoadBalancer_a0e17cbac3cce1966175ad6a6553301ee}\label{classLoadBalancer_a0e17cbac3cce1966175ad6a6553301ee}} 
+\index{LoadBalancer@{LoadBalancer}!server2\_port@{server2\_port}}
+\index{server2\_port@{server2\_port}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{server2\_port}{server2\_port}}
+{\footnotesize\ttfamily int Load\+Balancer\+::server2\+\_\+port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Port number of the second backend server. 
+
+\mbox{\Hypertarget{classLoadBalancer_a9ded46dafb4e69863615a6b9ea2e4240}\label{classLoadBalancer_a9ded46dafb4e69863615a6b9ea2e4240}} 
+\index{LoadBalancer@{LoadBalancer}!server\_fd@{server\_fd}}
+\index{server\_fd@{server\_fd}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{server\_fd}{server\_fd}}
+{\footnotesize\ttfamily int Load\+Balancer\+::server\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Server socket file descriptor. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{load__balancer_8cpp}{load\+\_\+balancer.\+cpp}}\end{DoxyCompactItemize}

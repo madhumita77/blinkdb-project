@@ -1,0 +1,404 @@
+\hypertarget{classBlinkServer}{}\doxysection{Blink\+Server Class Reference}
+\label{classBlinkServer}\index{BlinkServer@{BlinkServer}}
+
+
+Implements a Redis-\/compatible server using the RESP-\/2 protocol.  
+
+
+
+
+{\ttfamily \#include $<$blink\+\_\+server.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBlinkServer_aa4b6597f3c4e2e7d21d586d008faf9ba}{Blink\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBlinkServer_aa7e7ee913cec6fd521918fddfa2f07e0}{$\sim$\+Blink\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkServer_a71f9d737cb88515b2319ad4b28dc1122}{start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_aad9350460d1fe5624b671d665054a358}{encode\+Simple\+String}} (const std\+::string \&msg)
+\begin{DoxyCompactList}\small\item\em Encodes a simple string in RESP-\/2 format. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_a8f245c15f3f6041cc80623a32d27ed34}{encode\+Bulk\+String}} (const std\+::string \&msg)
+\begin{DoxyCompactList}\small\item\em Encodes a bulk string in RESP-\/2 format. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_a3740acd0772f2b1e5ce61a30e7ef280d}{encode\+Integer}} (int value)
+\begin{DoxyCompactList}\small\item\em Encodes an integer in RESP-\/2 format. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_ae03b4c1c9b84f8aa977fe3e755b4c85a}{encode\+Error}} (const std\+::string \&msg)
+\begin{DoxyCompactList}\small\item\em Encodes an error message in RESP-\/2 format. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classBlinkServer_af9cd462ea4a55f693b413e21e209e055}{decode\+Command}} (const std\+::string \&raw\+\_\+input)
+\begin{DoxyCompactList}\small\item\em Decodes a RESP-\/2 command from raw input. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_aa0063a17f87a97a9a33ab93b445af475}{handle\+Command}} (const std\+::vector$<$ std\+::string $>$ \&command)
+\begin{DoxyCompactList}\small\item\em Handles a decoded command. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_a45d63afd74151fc1cdf0df8b8029b8e0}{process\+Set}} (const std\+::vector$<$ std\+::string $>$ \&args)
+\begin{DoxyCompactList}\small\item\em Processes a SET command. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_a0f76c7dc8f11c8d84b4a98e972779a68}{process\+Get}} (const std\+::vector$<$ std\+::string $>$ \&args)
+\begin{DoxyCompactList}\small\item\em Processes a GET command. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBlinkServer_a47fada0de8967208ea77de3a5a59a8a1}{process\+Del}} (const std\+::vector$<$ std\+::string $>$ \&args)
+\begin{DoxyCompactList}\small\item\em Processes a DEL command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkServer_acf116cdf017308449a0801537eed5dc2}{setup\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the server socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkServer_a8113b995407c4ce8f7c1da4983d7941c}{handle\+Client\+Connections}} ()
+\begin{DoxyCompactList}\small\item\em Handles client connections using epoll. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBlinkServer_a1ce60f24807a03e2dacffffba47d1e03}{handle\+Client\+Read}} (int client\+\_\+socket)
+\begin{DoxyCompactList}\small\item\em Handles a read event from a client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classBlinkServer_aa926aab6626fbea56cb2716cc2c4f56a}{server\+\_\+fd}}
+\begin{DoxyCompactList}\small\item\em Socket file descriptor for the server. \end{DoxyCompactList}\item 
+struct sockaddr\+\_\+in \mbox{\hyperlink{classBlinkServer_a9c8a50cd93926a491ac33c189c5aa5e1}{address}}
+\begin{DoxyCompactList}\small\item\em Server address structure. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classBlinkDB}{Blink\+DB}} $>$ \mbox{\hyperlink{classBlinkServer_a4be3794f8418b7e5dfde0700211a87b9}{database}}
+\begin{DoxyCompactList}\small\item\em Database instance for storing key-\/value pairs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classBlinkServer_a9344a781d9698ec9559bbc4e7f77bb55}{PORT}} = 9001
+\begin{DoxyCompactList}\small\item\em Port number the server listens on. \end{DoxyCompactList}\item 
+static const int \mbox{\hyperlink{classBlinkServer_ae6d68ec76e0bfef876f5fa1e304072a1}{MAX\+\_\+\+CLIENTS}} = 1500
+\begin{DoxyCompactList}\small\item\em Maximum number of simultaneous client connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements a Redis-\/compatible server using the RESP-\/2 protocol. 
+
+This class provides a server that listens for client connections and processes Redis-\/compatible commands using the RESP-\/2 protocol. It uses epoll for efficient handling of multiple client connections. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBlinkServer_aa4b6597f3c4e2e7d21d586d008faf9ba}\label{classBlinkServer_aa4b6597f3c4e2e7d21d586d008faf9ba}} 
+\index{BlinkServer@{BlinkServer}!BlinkServer@{BlinkServer}}
+\index{BlinkServer@{BlinkServer}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{BlinkServer()}{BlinkServer()}}
+{\footnotesize\ttfamily Blink\+Server\+::\+Blink\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Constructor implementation.
+
+Initializes the database and sets up the server socket. \mbox{\Hypertarget{classBlinkServer_aa7e7ee913cec6fd521918fddfa2f07e0}\label{classBlinkServer_aa7e7ee913cec6fd521918fddfa2f07e0}} 
+\index{BlinkServer@{BlinkServer}!````~BlinkServer@{$\sim$BlinkServer}}
+\index{````~BlinkServer@{$\sim$BlinkServer}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{$\sim$BlinkServer()}{~BlinkServer()}}
+{\footnotesize\ttfamily Blink\+Server\+::$\sim$\+Blink\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Destructor implementation.
+
+Closes the server socket. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBlinkServer_af9cd462ea4a55f693b413e21e209e055}\label{classBlinkServer_af9cd462ea4a55f693b413e21e209e055}} 
+\index{BlinkServer@{BlinkServer}!decodeCommand@{decodeCommand}}
+\index{decodeCommand@{decodeCommand}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{decodeCommand()}{decodeCommand()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Blink\+Server\+::decode\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{raw\+\_\+input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Decodes a RESP-\/2 command from raw input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em raw\+\_\+input} & The raw input string to decode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of command arguments
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em raw\+\_\+input} & The raw input string to decode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of command arguments
+\end{DoxyReturn}
+Parses RESP-\/2 protocol formatted commands into a vector of strings. \mbox{\Hypertarget{classBlinkServer_a8f245c15f3f6041cc80623a32d27ed34}\label{classBlinkServer_a8f245c15f3f6041cc80623a32d27ed34}} 
+\index{BlinkServer@{BlinkServer}!encodeBulkString@{encodeBulkString}}
+\index{encodeBulkString@{encodeBulkString}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{encodeBulkString()}{encodeBulkString()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::encode\+Bulk\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Encodes a bulk string in RESP-\/2 format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The string to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The RESP-\/2 encoded bulk string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkServer_ae03b4c1c9b84f8aa977fe3e755b4c85a}\label{classBlinkServer_ae03b4c1c9b84f8aa977fe3e755b4c85a}} 
+\index{BlinkServer@{BlinkServer}!encodeError@{encodeError}}
+\index{encodeError@{encodeError}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{encodeError()}{encodeError()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::encode\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Encodes an error message in RESP-\/2 format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The error message to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The RESP-\/2 encoded error message 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkServer_a3740acd0772f2b1e5ce61a30e7ef280d}\label{classBlinkServer_a3740acd0772f2b1e5ce61a30e7ef280d}} 
+\index{BlinkServer@{BlinkServer}!encodeInteger@{encodeInteger}}
+\index{encodeInteger@{encodeInteger}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{encodeInteger()}{encodeInteger()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::encode\+Integer (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Encodes an integer in RESP-\/2 format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The integer to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The RESP-\/2 encoded integer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkServer_aad9350460d1fe5624b671d665054a358}\label{classBlinkServer_aad9350460d1fe5624b671d665054a358}} 
+\index{BlinkServer@{BlinkServer}!encodeSimpleString@{encodeSimpleString}}
+\index{encodeSimpleString@{encodeSimpleString}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{encodeSimpleString()}{encodeSimpleString()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::encode\+Simple\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Encodes a simple string in RESP-\/2 format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & The string to encode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The RESP-\/2 encoded simple string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBlinkServer_a8113b995407c4ce8f7c1da4983d7941c}\label{classBlinkServer_a8113b995407c4ce8f7c1da4983d7941c}} 
+\index{BlinkServer@{BlinkServer}!handleClientConnections@{handleClientConnections}}
+\index{handleClientConnections@{handleClientConnections}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{handleClientConnections()}{handleClientConnections()}}
+{\footnotesize\ttfamily void Blink\+Server\+::handle\+Client\+Connections (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles client connections using epoll. 
+
+Main event loop that accepts new connections and processes client requests using epoll for efficient I/O multiplexing. \mbox{\Hypertarget{classBlinkServer_a1ce60f24807a03e2dacffffba47d1e03}\label{classBlinkServer_a1ce60f24807a03e2dacffffba47d1e03}} 
+\index{BlinkServer@{BlinkServer}!handleClientRead@{handleClientRead}}
+\index{handleClientRead@{handleClientRead}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{handleClientRead()}{handleClientRead()}}
+{\footnotesize\ttfamily void Blink\+Server\+::handle\+Client\+Read (\begin{DoxyParamCaption}\item[{int}]{client\+\_\+socket }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles a read event from a client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em client\+\_\+socket} & The client socket file descriptor\\
+\hline
+\end{DoxyParams}
+Reads data from the client, processes the command, and sends the response. \mbox{\Hypertarget{classBlinkServer_aa0063a17f87a97a9a33ab93b445af475}\label{classBlinkServer_aa0063a17f87a97a9a33ab93b445af475}} 
+\index{BlinkServer@{BlinkServer}!handleCommand@{handleCommand}}
+\index{handleCommand@{handleCommand}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{handleCommand()}{handleCommand()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::handle\+Command (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Handles a decoded command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Vector of command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+Routes the command to the appropriate handler based on the command type. \mbox{\Hypertarget{classBlinkServer_a47fada0de8967208ea77de3a5a59a8a1}\label{classBlinkServer_a47fada0de8967208ea77de3a5a59a8a1}} 
+\index{BlinkServer@{BlinkServer}!processDel@{processDel}}
+\index{processDel@{processDel}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{processDel()}{processDel()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::process\+Del (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processes a DEL command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+Deletes a key-\/value pair from the database. \mbox{\Hypertarget{classBlinkServer_a0f76c7dc8f11c8d84b4a98e972779a68}\label{classBlinkServer_a0f76c7dc8f11c8d84b4a98e972779a68}} 
+\index{BlinkServer@{BlinkServer}!processGet@{processGet}}
+\index{processGet@{processGet}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{processGet()}{processGet()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::process\+Get (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processes a GET command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+Retrieves a value by key from the database. \mbox{\Hypertarget{classBlinkServer_a45d63afd74151fc1cdf0df8b8029b8e0}\label{classBlinkServer_a45d63afd74151fc1cdf0df8b8029b8e0}} 
+\index{BlinkServer@{BlinkServer}!processSet@{processSet}}
+\index{processSet@{processSet}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{processSet()}{processSet()}}
+{\footnotesize\ttfamily std\+::string Blink\+Server\+::process\+Set (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processes a SET command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Command arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+RESP-\/2 encoded response
+\end{DoxyReturn}
+Sets a key-\/value pair in the database. \mbox{\Hypertarget{classBlinkServer_acf116cdf017308449a0801537eed5dc2}\label{classBlinkServer_acf116cdf017308449a0801537eed5dc2}} 
+\index{BlinkServer@{BlinkServer}!setupServer@{setupServer}}
+\index{setupServer@{setupServer}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{setupServer()}{setupServer()}}
+{\footnotesize\ttfamily void Blink\+Server\+::setup\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up the server socket. 
+
+Creates and configures the server socket, binds it to the port, and starts listening for connections. \mbox{\Hypertarget{classBlinkServer_a71f9d737cb88515b2319ad4b28dc1122}\label{classBlinkServer_a71f9d737cb88515b2319ad4b28dc1122}} 
+\index{BlinkServer@{BlinkServer}!start@{start}}
+\index{start@{start}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Blink\+Server\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the server. 
+
+Begins listening for and handling client connections. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBlinkServer_a9c8a50cd93926a491ac33c189c5aa5e1}\label{classBlinkServer_a9c8a50cd93926a491ac33c189c5aa5e1}} 
+\index{BlinkServer@{BlinkServer}!address@{address}}
+\index{address@{address}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily struct sockaddr\+\_\+in Blink\+Server\+::address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Server address structure. 
+
+\mbox{\Hypertarget{classBlinkServer_a4be3794f8418b7e5dfde0700211a87b9}\label{classBlinkServer_a4be3794f8418b7e5dfde0700211a87b9}} 
+\index{BlinkServer@{BlinkServer}!database@{database}}
+\index{database@{database}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{database}{database}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classBlinkDB}{Blink\+DB}}$>$ Blink\+Server\+::database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Database instance for storing key-\/value pairs. 
+
+\mbox{\Hypertarget{classBlinkServer_ae6d68ec76e0bfef876f5fa1e304072a1}\label{classBlinkServer_ae6d68ec76e0bfef876f5fa1e304072a1}} 
+\index{BlinkServer@{BlinkServer}!MAX\_CLIENTS@{MAX\_CLIENTS}}
+\index{MAX\_CLIENTS@{MAX\_CLIENTS}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{MAX\_CLIENTS}{MAX\_CLIENTS}}
+{\footnotesize\ttfamily const int Blink\+Server\+::\+MAX\+\_\+\+CLIENTS = 1500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Maximum number of simultaneous client connections. 
+
+\mbox{\Hypertarget{classBlinkServer_a9344a781d9698ec9559bbc4e7f77bb55}\label{classBlinkServer_a9344a781d9698ec9559bbc4e7f77bb55}} 
+\index{BlinkServer@{BlinkServer}!PORT@{PORT}}
+\index{PORT@{PORT}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily const int Blink\+Server\+::\+PORT = 9001\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Port number the server listens on. 
+
+\mbox{\Hypertarget{classBlinkServer_aa926aab6626fbea56cb2716cc2c4f56a}\label{classBlinkServer_aa926aab6626fbea56cb2716cc2c4f56a}} 
+\index{BlinkServer@{BlinkServer}!server\_fd@{server\_fd}}
+\index{server\_fd@{server\_fd}!BlinkServer@{BlinkServer}}
+\doxysubsubsection{\texorpdfstring{server\_fd}{server\_fd}}
+{\footnotesize\ttfamily int Blink\+Server\+::server\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Socket file descriptor for the server. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{blink__server_8h}{blink\+\_\+server.\+h}}\item 
+src/\mbox{\hyperlink{blink__server_8cpp}{blink\+\_\+server.\+cpp}}\end{DoxyCompactItemize}

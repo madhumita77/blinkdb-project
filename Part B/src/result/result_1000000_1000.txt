@@ -1,0 +1,61 @@
+SET: 0.00SET: 103538.47SET: 105671.20SET: 105712.04SET: 105669.95SET: 105516.97SET: 106094.14SET: 106068.40SET: 106379.82SET: 106576.01SET: 106700.31SET: 106940.59SET: 105528.54SET: 104842.31SET: 104269.64SET: 104368.80SET: 104639.95SET: 105034.72SET: 105409.73SET: 105747.29SET: 106030.34SET: 106173.18SET: 106460.35SET: 106591.31SET: 106608.66SET: 106408.22SET: 106400.34SET: 106215.48SET: 106208.41SET: 106234.48SET: 106287.57SET: 106245.14SET: 106251.46SET: 105393.15SET: 104938.95SET: 104710.94SET: 104547.34SET: 104518.99SET: 104454.56====== SET ======
+  1000000 requests completed in 9.58 seconds
+  1000 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+0.00% <= 2 milliseconds
+0.01% <= 3 milliseconds
+0.14% <= 4 milliseconds
+77.80% <= 5 milliseconds
+92.71% <= 6 milliseconds
+94.72% <= 7 milliseconds
+96.22% <= 8 milliseconds
+97.16% <= 9 milliseconds
+97.51% <= 10 milliseconds
+97.81% <= 11 milliseconds
+98.12% <= 12 milliseconds
+98.40% <= 13 milliseconds
+98.80% <= 14 milliseconds
+99.05% <= 15 milliseconds
+99.45% <= 16 milliseconds
+99.90% <= 17 milliseconds
+99.92% <= 18 milliseconds
+99.93% <= 20 milliseconds
+99.93% <= 21 milliseconds
+99.97% <= 22 milliseconds
+99.98% <= 23 milliseconds
+99.99% <= 24 milliseconds
+100.00% <= 24 milliseconds
+104427.73 requests per second
+
+GET: 0.00GET: 103335.85GET: 105085.10GET: 106753.56GET: 106928.58GET: 107037.70GET: 107203.02GET: 107416.30GET: 107369.59GET: 107441.38GET: 107049.27GET: 106883.47GET: 106154.17GET: 103754.17GET: 103196.90GET: 102711.20GET: 102731.90GET: 102922.51GET: 102990.11GET: 103142.47GET: 103061.90GET: 102724.84GET: 102715.05GET: 102811.22GET: 102660.34GET: 102497.94GET: 102376.70GET: 102382.08GET: 102547.24GET: 102700.08GET: 102816.66GET: 102979.17GET: 103105.97GET: 102914.05GET: 102440.29GET: 102333.86GET: 102239.60GET: 102166.05GET: 102261.09====== GET ======
+  1000000 requests completed in 9.77 seconds
+  1000 parallel clients
+  3 bytes payload
+  keep alive: 1
+  multi-thread: no
+
+0.00% <= 2 milliseconds
+0.01% <= 3 milliseconds
+0.13% <= 4 milliseconds
+70.79% <= 5 milliseconds
+95.45% <= 6 milliseconds
+97.06% <= 7 milliseconds
+97.97% <= 8 milliseconds
+98.94% <= 9 milliseconds
+99.27% <= 10 milliseconds
+99.65% <= 11 milliseconds
+99.79% <= 12 milliseconds
+99.83% <= 13 milliseconds
+99.86% <= 14 milliseconds
+99.90% <= 15 milliseconds
+99.91% <= 16 milliseconds
+99.93% <= 17 milliseconds
+99.96% <= 20 milliseconds
+99.99% <= 21 milliseconds
+100.00% <= 21 milliseconds
+102343.67 requests per second
+
+
